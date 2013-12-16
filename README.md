@@ -21,3 +21,6 @@ following files will be monitored
 `static/css/less/somelessfile.less` > `static/css/somelessfile.css`
 
 `static/css/less/css-main.less` > `static/css/css-main.css`
+
+#Browser addons
+Firefox addon https://addons.mozilla.org/en-us/firefox/addon/fireless/reviews/
