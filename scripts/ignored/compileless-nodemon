@@ -1,0 +1,7 @@
+if [ ! -f node_modules/nodemon/nodemon.js ]; then
+    npm i nodemon
+fi
+if [ ! -f node_modules/less/bin/lessc ]; then
+    npm i less
+fi
+node_modules/nodemon/nodemon.js --watch $1 -e less scripts/ignored/compileless.js $1 $2

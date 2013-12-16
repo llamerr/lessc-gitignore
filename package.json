@@ -1,0 +1,20 @@
+{
+  "name": "lessc-gitignore",
+  "version": "0.0.0",
+  "description": "lessc-gitignore ===============",
+  "main": "install",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/llamerr/lessc-gitignore.git"
+  },
+  "author": "",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "gitHead": "b0e8a3987c466c265fa89013830ede80834c276d",
+  "bugs": {
+    "url": "https://github.com/llamerr/lessc-gitignore/issues"
+  }
+}

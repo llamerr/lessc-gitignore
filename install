@@ -1,0 +1,3 @@
+cp --parents scripts/ignored/compileless.js $1
+cp --parents scripts/ignored/compileless-nodemon $1
+echo "scripts/ignored/" >> $1/.git/info/exclude
