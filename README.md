@@ -22,5 +22,7 @@ following files will be monitored
 
 `static/css/less/css-main.less` > `static/css/css-main.css`
 
+you can pass last param to distinct between dev/prod mode. `dev` or no param will make it dev mode, anything else like `prod` will minify css file.
+
 #Browser addons
 Firefox addon https://addons.mozilla.org/en-us/firefox/addon/fireless/reviews/
