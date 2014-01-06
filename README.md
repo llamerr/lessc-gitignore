@@ -14,7 +14,7 @@ now you can remove `lessc-gitignore` folder and switch to your project's folder
 #Usage
 supposed path for less files is in `less` directory, compiled files are put into parent dir
 
-`scripts/ignored/compileless-nodemon static/css somelessfile,css-main`
+`scripts/ignored/compileless-nodemon dev.server.com static/css somelessfile1,somelessfile2 prod`
 
 following files will be monitored
 
