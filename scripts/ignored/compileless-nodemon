@@ -1,7 +1,59 @@
-if [ ! -f node_modules/nodemon/nodemon.js ]; then
+#!/bin/bash
+
+do_version_check() {
+
+   [ "$1" == "$2" ] && return 10
+
+   ver1front=`echo $1 | cut -d "." -f -1`
+   ver1back=`echo $1 | cut -d "." -f 2-`
+
+   ver2front=`echo $2 | cut -d "." -f -1`
+   ver2back=`echo $2 | cut -d "." -f 2-`
+
+   if [ "$ver1front" != "$1" ] || [ "$ver2front" != "$2" ]; then
+       [ "$ver1front" -gt "$ver2front" ] && return 11
+       [ "$ver1front" -lt "$ver2front" ] && return 9
+
+       [ "$ver1front" == "$1" ] || [ -z "$ver1back" ] && ver1back=0
+       [ "$ver2front" == "$2" ] || [ -z "$ver2back" ] && ver2back=0
+       do_version_check "$ver1back" "$ver2back"
+       return $?
+   else
+           [ "$1" -gt "$2" ] && return 11 || return 9
+   fi
+}
+
+# check if global less installed and have required version
+GL=0
+GL_PATH="/usr/local/lib/node_modules/less/bin/lessc"
+if [ -f $GL_PATH ]; then
+    VERSION=$($GL_PATH -v | sed 's/[^0-9.]//g')
+    CHECK=$(do_version_check $VERSION '1.5.0')
+    if test $? -ge 10
+    then
+        GL=1
+    fi
+fi
+
+# check if local less installed and have required version
+LL=0
+LL_PATH="node_modules/less/bin/lessc"
+if [ -f $LL_PATH ]; then
+    VERSION=$($LL_PATH -v | sed 's/[^0-9.]//g')
+    CHECK=$(do_version_check $VERSION '1.5.0')
+    if test $? -ge 10
+    then
+        LL=1
+    fi
+fi
+
+# install nodemon if not installed yet
+if [ ! -f node_modules/nodemon/bin/nodemon.js ]; then
     npm i nodemon
 fi
-if [ ! -f node_modules/less/bin/lessc ]; then
+
+#check less version and install it locally if required version is not available
+if [ $GL -eq 0 ] && [ $LL -eq 0 ]; then
     npm i less
 fi
-node_modules/nodemon/nodemon.js --watch $1 -e less scripts/ignored/compileless.js $1 $2 $3
+node_modules/nodemon/bin/nodemon.js --watch $2/less -e less scripts/ignored/compileless.js $1 $2 $3 $4
