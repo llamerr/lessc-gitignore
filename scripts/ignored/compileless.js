@@ -25,7 +25,7 @@ if (env == 'dev') {
 files.forEach(function(file){
   if (env == 'dev') params += ' --source-map='+path+'/'+file+'.css.map';
   console.log(lessc + params + ' ' + path+'/less/'+file+'.less ' + path+'/'+file+'.css')
-  exec( lessc + params + ' ' + path+'/less/'+file+'.less ' + path+'/'+file+'.css', 
+  //exec( lessc + params + ' ' + path+'/less/'+file+'.less ' + path+'/'+file+'.css', 
   function(error,stdout,stderr){
     console.log(stderr);
   });
